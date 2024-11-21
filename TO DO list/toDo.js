@@ -53,27 +53,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // Render task in the DOM
-    // function renderTask(task) {
-    //     let TaskDiv = document.createElement('div');
-    //     TaskDiv.classList.add('task-item');
-    //     TaskDiv.innerHTML = `
-    //         <span>${task.Task}</span>
-    //         <button class='delete'>Delete</button>
-    //     `;
-    //     newTask.appendChild(TaskDiv);
-
-    //     // Delete task event
-    //     TaskDiv.querySelector('.delete').addEventListener('click', function () {
-    //         newTask.removeChild(TaskDiv);
-    //         TaskList = TaskList.filter(t => t.id !== task.id);
-    //     });
-
-    //     // Mark task as complete when clicked
-    //     TaskDiv.addEventListener('click', function (e) {
-    //         if (e.target.classList.contains('delete')) return;
-
-    //         TaskDiv.classList.toggle('complete');
-    //     });
-    // }
+    
 });
