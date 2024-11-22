@@ -1,0 +1,95 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: rgb(61, 58, 58);
+    color: snow;
+  }
+  
+  .navbar-container {
+    background-color: rgb(2, 2, 32);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+  }
+  
+  .navbar-img img {
+    max-width: 50px;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .navbar-toggle {
+    font-size: 1.7rem;
+    background-color: transparent;
+    border: none;
+    color: snow;
+    display: none;
+  }
+  
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1.6rem;
+  }
+  
+  li a {
+    text-decoration: none;
+    color: snow;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    position: relative;
+  }
+   li a::after{
+    content: '';
+    border-bottom: 3px solid beige;
+    width: 0%;
+    left: 0;
+    position: absolute;
+    bottom: -0.5rem;
+    transition: all 0.3s linear;
+   }
+   li a:hover::after{
+    width: 100%;
+    color: #3f5478;
+   }
+  .social_links {
+    font-size: 1.4rem;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 680px) {
+    .pages {
+      display: none; /* Hidden by default */
+      flex-direction: row; /* Stack links vertically */
+      background-color: #3f5478;
+      justify-content: space-evenly;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+    }
+    .social_links{
+        display: none;
+    }
+  
+    .showlink {
+      display: flex !important; /* Show links when the class is toggled */
+    }
+  
+    .navbar-toggle {
+      display: block;
+      cursor: pointer;
+    }
+    .navbar-img{
+        display: flex;
+        justify-content: space-evenly;
+        width: 100vw;
+    }
+  }
+  
