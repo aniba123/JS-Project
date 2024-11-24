@@ -16,6 +16,7 @@ const menu = [
   // Get DOM elements
   const sectionCenter = document.querySelector(".section-center");
   const btnContainer = document.querySelector(".btn-container");
+  let cartItems=document.getElementById('cart-items');
   
   // Load content when the page loads
   window.addEventListener("DOMContentLoaded", function () {
@@ -37,16 +38,69 @@ const menu = [
               <h4 class="price">$${item.price}</h4>
             </header>
             <p class="item-text">${item.desc}</p>
+            <button class='addToCart' data-id='${item.id}'>Add to Cart</button>
           </div>
         </article>
       `;
     }).join(""); // Convert array to string
     sectionCenter.innerHTML = itemsHTML; // Add items to the page
+
+    // even listners to all button
+     let CartButtons= sectionCenter.querySelectorAll('.addToCart');
+     CartButtons.forEach((items)=>{
+          items.addEventListener('click',(aniba)=>
+          {
+           let id=   parseInt(aniba.currentTarget.dataset.id);
+           let product=menu.find((item)=>item.id===id)
+           addToCart(product)
+          
+          })
+     })
+  }
+let cartArray=[];
+let EmptyCart=document.getElementById('empty-cart')
+// add to cart function
+          function addToCart(product){
+          cartArray.push(product);
+          EmptyCart.style.display='none';
+          let cartDiv=document.createElement('div');
+          cartDiv.classList.add('cart-items');
+          cartDiv.innerHTML=`<p>${product.title} - $${product.price}</p>
+          <button class='remove'>Remove this Item!</button>
+          `;
+          cartItems.appendChild(cartDiv)
+          displayTotal(product.price);
+
+       let removeButton=   cartItems.querySelector('.remove');
+       removeButton.addEventListener('click',function(){
+        RemoveItem(product,cartDiv)
+       })
+          }
+
+  // display total
+let totalPrice=document.getElementById('total')
+
+  function displayTotal(price){
+   let currentPrice= parseFloat(totalPrice.textContent.replace('$',''));
+   currentPrice=currentPrice+price;
+    totalPrice.textContent=`$${currentPrice.toFixed(2)}`
+  
   }
 
-
-
+  // remove the item and update the price
+  function RemoveItem(product, element) {
+    // Remove the product from the cart array
+    cartArray = cartArray.filter((item) => item.id !== product.id);
   
+    // Remove the element from the DOM
+    element.remove();
+  
+    // Subtract the product's price from the total
+    displayTotal(-product.price);
+  }
+  
+
+
   // Function to create category buttons
   function createCategoryButtons() {
     // Get unique categories
