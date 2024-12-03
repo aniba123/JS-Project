@@ -8,7 +8,6 @@
     background-color: rgb(61, 58, 58);
     color: snow;
   }
-  
   .navbar-container {
     background-color: rgb(2, 2, 32);
     display: flex;
@@ -46,12 +45,12 @@
   }
    li a::after{
     content: '';
-    border-bottom: 3px solid beige;
+    /* border-bottom: 3px solid beige; */
     width: 0%;
     left: 0;
     position: absolute;
     bottom: -0.5rem;
-    transition: all 0.3s linear;
+    transition: width 0.3s linear;
    }
    li a:hover::after{
     width: 100%;
@@ -72,7 +71,8 @@
       top: 50px;
       left: 0;
       width: 100%;
-      padding: 10px;
+      padding: 5px;
+      font-size: 0.8rem;
     }
     .social_links{
         display: none;
